@@ -1,17 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-function Section() {
+function Section({ title, description, backgrounImg, buttonOne, buttonTwo }) {
   return (
-    <Wrap>
+    <Wrap backgrounImg={backgrounImg}>
       <div className="item-text">
-        <h1>Model S</h1>
-        <p>Order Online For Touchless Delivery</p>
+        <h1>{title}</h1>
+        <p>{description}</p>
       </div>
       <div className="buttons">
         <div className="button-group">
-          <button>Custom Order</button>
-          <button className="white-btn">Existing Inventory</button>
+          {buttonOne && <button>{buttonOne}</button>}
+          {buttonTwo && <button className="white-btn">{buttonTwo}</button>}
         </div>
         <img
           className="down-arrow"
@@ -35,7 +35,8 @@ const Wrap = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("/images/model-s.jpg");
+  /* background-image: url("/images/model-s.jpg"); */
+  background-image: ${(props) => `url("/images/${props.backgrounImg}")`};
   .item-text {
     padding-top: 15vh;
     text-align: center;
