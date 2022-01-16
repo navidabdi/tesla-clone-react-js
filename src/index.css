@@ -8,6 +8,14 @@ body {
   color: #393c41;
   overflow-x: hidden;
 }
+a {
+  display: block;
+  text-decoration: none;
+  color: #393c41;
+}
+ul {
+  list-style: none;
+}
 @keyframes animateDown {
   0%,
   20%,
