@@ -11,6 +11,7 @@ function Home() {
         backgrounImg="model-s.jpg"
         buttonOne="Custom Order"
         buttonTwo="Existing Inventory"
+        downArrow={true}
       />
       <Section
         title="Model X"
@@ -18,6 +19,7 @@ function Home() {
         backgrounImg="model-x.jpg"
         buttonOne="Custom Order"
         buttonTwo="Existing Inventory"
+        downArrow={false}
       />
       <Section
         title="Model Y"
@@ -25,6 +27,7 @@ function Home() {
         backgrounImg="model-y.jpg"
         buttonOne="Custom Order"
         buttonTwo="Existing Inventory"
+        downArrow={false}
       />
       <Section
         title="Model 3"
@@ -32,6 +35,7 @@ function Home() {
         backgrounImg="model-3.jpg"
         buttonOne="Custom Order"
         buttonTwo="Existing Inventory"
+        downArrow={false}
       />
       <Section
         title="Lowest Cost Solar Panels In America"
@@ -39,6 +43,7 @@ function Home() {
         backgrounImg="solar-panel.jpg"
         buttonOne="Order Now"
         buttonTwo="Learn More"
+        downArrow={false}
       />
       <Section
         title="Solar For New Roofs"
@@ -46,6 +51,7 @@ function Home() {
         backgrounImg="solar-roof.jpg"
         buttonOne="Order Now"
         buttonTwo="Learn More"
+        downArrow={false}
       />
       <Section
         title="Accessories"
@@ -53,6 +59,7 @@ function Home() {
         backgrounImg="accessories.jpg"
         buttonOne="Shop Now"
         buttonTwo=""
+        downArrow={false}
       />
     </Container>
   );

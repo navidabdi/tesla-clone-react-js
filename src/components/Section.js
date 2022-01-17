@@ -2,7 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { Fade } from "react-reveal";
 
-function Section({ title, description, backgrounImg, buttonOne, buttonTwo }) {
+function Section({
+  title,
+  description,
+  backgrounImg,
+  buttonOne,
+  buttonTwo,
+  downArrow,
+}) {
   return (
     <Wrap backgrounImg={backgrounImg}>
       <Fade bottom>
@@ -18,11 +25,13 @@ function Section({ title, description, backgrounImg, buttonOne, buttonTwo }) {
             {buttonTwo && <button className="white-btn">{buttonTwo}</button>}
           </div>
         </Fade>
-        <img
-          className="down-arrow"
-          src="/images/down-arrow.svg"
-          alt="down arrow"
-        />
+        {downArrow && (
+          <img
+            className="down-arrow"
+            src="/images/down-arrow.svg"
+            alt="down arrow"
+          />
+        )}
       </div>
     </Wrap>
   );
