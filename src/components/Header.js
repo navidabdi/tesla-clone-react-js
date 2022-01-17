@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
+import { selectCars } from "../features/car/carSlice";
+import { useSelector } from "react-redux";
 const Header = () => {
   // Toggle The Burger Nav
   const [burgerStatus, setBurgerStatus] = useState(false);
-
+  const cars = useSelector(selectCars);
   return (
     <>
       <Container>
@@ -13,18 +14,12 @@ const Header = () => {
         </a>
         <nav>
           <ul>
-            <li>
-              <a href="">Model S</a>
-            </li>
-            <li>
-              <a href="">Model X</a>
-            </li>
-            <li>
-              <a href="">Model Y</a>
-            </li>
-            <li>
-              <a href="">Model 3</a>
-            </li>
+            {cars &&
+              cars.map((car, index) => (
+                <li key={index}>
+                  <a href="">{car}</a>
+                </li>
+              ))}
           </ul>
         </nav>
         <div className="menu">
@@ -42,21 +37,12 @@ const Header = () => {
           <div className={`line one ${burgerStatus}`}></div>
           <div className={`line two ${burgerStatus}`}></div>
         </div>
-        <li>
-          <a href="">Existing Inventory</a>
-        </li>
-        <li>
-          <a href="">Used Inventory</a>
-        </li>
-        <li>
-          <a href="">Trade-In</a>
-        </li>
-        <li>
-          <a href="">Cybertruck</a>
-        </li>
-        <li>
-          <a href="">Roadaster</a>
-        </li>
+        {cars &&
+          cars.map((car, index) => (
+            <li key={index}>
+              <a href="">{car}</a>
+            </li>
+          ))}
         <li>
           <a href="">Existing Inventory</a>
         </li>
@@ -137,7 +123,7 @@ const Container = styled.div`
 const BurgerNav = styled.ul`
   position: fixed;
   width: 300px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(0.5rem);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   display: flex;
@@ -150,6 +136,7 @@ const BurgerNav = styled.ul`
   transform: ${(props) => (props.show ? "translateX(0)" : "translateX(100%)")};
   transition: all 0.3s ease-in-out;
   .burger-close {
+    margin-bottom: 1rem;
     align-self: flex-end;
     width: 1.8rem;
     height: 1rem;
