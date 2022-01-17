@@ -1,40 +1,81 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-function Header() {
+const Header = () => {
+  // Toggle The Burger Nav
+  const [burgerStatus, setBurgerStatus] = useState(false);
+
   return (
-    <Container>
-      <a href="">
-        <img src="/images/logo.svg" alt="logo" />
-      </a>
-      <nav>
-        <ul>
-          <li>
-            <a href="">Model S</a>
-          </li>
-          <li>
-            <a href="">Model X</a>
-          </li>
-          <li>
-            <a href="">Model Y</a>
-          </li>
-          <li>
-            <a href="">Model 3</a>
-          </li>
-        </ul>
-      </nav>
-      <div className="menu">
-        <a href="">Shop</a>
-        <a href="">Tesla Account</a>
-        <div className="menu-lines">
-          <div className="line"></div>
-          <div className="line"></div>
-          <div className="line"></div>
+    <>
+      <Container>
+        <a href="">
+          <img src="/images/logo.svg" alt="logo" />
+        </a>
+        <nav>
+          <ul>
+            <li>
+              <a href="">Model S</a>
+            </li>
+            <li>
+              <a href="">Model X</a>
+            </li>
+            <li>
+              <a href="">Model Y</a>
+            </li>
+            <li>
+              <a href="">Model 3</a>
+            </li>
+          </ul>
+        </nav>
+        <div className="menu">
+          <a href="">Shop</a>
+          <a href="">Tesla Account</a>
+          <div onClick={() => setBurgerStatus(true)} className="burger-open">
+            <div className="line"></div>
+            <div className="line"></div>
+            <div className="line"></div>
+          </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+      <BurgerNav show={burgerStatus} className="burger-nav">
+        <div onClick={() => setBurgerStatus(false)} className="burger-close">
+          <div className={`line one ${burgerStatus}`}></div>
+          <div className={`line two ${burgerStatus}`}></div>
+        </div>
+        <li>
+          <a href="">Existing Inventory</a>
+        </li>
+        <li>
+          <a href="">Used Inventory</a>
+        </li>
+        <li>
+          <a href="">Trade-In</a>
+        </li>
+        <li>
+          <a href="">Cybertruck</a>
+        </li>
+        <li>
+          <a href="">Roadaster</a>
+        </li>
+        <li>
+          <a href="">Existing Inventory</a>
+        </li>
+        <li>
+          <a href="">Used Inventory</a>
+        </li>
+        <li>
+          <a href="">Trade-In</a>
+        </li>
+        <li>
+          <a href="">Cybertruck</a>
+        </li>
+        <li>
+          <a href="">Roadaster</a>
+        </li>
+      </BurgerNav>
+    </>
   );
-}
+};
 
 export default Header;
 
@@ -76,7 +117,7 @@ const Container = styled.div`
         display: none;
       }
     }
-    .menu-lines {
+    .burger-open {
       width: 1.8rem;
       height: 1rem;
       display: flex;
@@ -89,6 +130,54 @@ const Container = styled.div`
         height: 0.15rem;
         background: black;
       }
+    }
+  }
+`;
+
+const BurgerNav = styled.ul`
+  position: fixed;
+  width: 300px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(0.5rem);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 11;
+  padding: 2.2rem;
+  transform: ${(props) => (props.show ? "translateX(0)" : "translateX(100%)")};
+  transition: all 0.3s ease-in-out;
+  .burger-close {
+    align-self: flex-end;
+    width: 1.8rem;
+    height: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 1rem;
+    cursor: pointer;
+    .line {
+      width: 100%;
+      height: 0.15rem;
+      background: black;
+      transition: all 1s ease;
+    }
+    .one.true {
+      transform: rotateZ(45deg);
+    }
+    .two.true {
+      transform: rotateZ(-45deg) translate(10px, -9px);
+    }
+  }
+  li {
+    text-align: left;
+    border-bottom: 1px solid #ffffffac;
+    a {
+      padding: 1.2rem 0;
+      font-weight: 600;
+      display: block;
     }
   }
 `;

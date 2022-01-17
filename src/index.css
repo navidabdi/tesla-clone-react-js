@@ -31,3 +31,6 @@ ul {
     transform: translateY(3px);
   }
 }
+.burger-nav.active {
+  transform: translateX(0);
+}
